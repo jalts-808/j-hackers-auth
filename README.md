@@ -1,5 +1,7 @@
 # Hackers Auth Service
 
+> Forked by jalts-808 for 3demo project - January 2025
+
 A simple authentication service built with Go and Gin, providing JWT-based authentication for demo purposes.
 
 ## Features
