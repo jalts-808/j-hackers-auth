@@ -35,7 +35,7 @@ jobs:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
         with:
-          repository: cloudbees-days/hackers-auth
+          repository: jalts-808/j-hackers-auth
       - uses: cloudbees-days/setup-kubeconfig
         name: Set kubeconfig
         with:
@@ -51,7 +51,9 @@ jobs:
             image:
               repository: ${{ secrets.DOCKERHUB_USER }}/hackers-auth
               tag: ${{ inputs.artifactVersion }}
-            hostname: hackers-auth.${{ inputs.environment }}.preview.cb-demos.io
+            hostname: hackers-auth.54.214.225.132.nip.io
+            ingress:
+              className: traefik
       - name: Register deployed artifact
         uses: cloudbees-io/register-deployed-artifact@v2
         with:
@@ -62,7 +64,6 @@ jobs:
         with:
           content: |-
             ## Deployed environment
-            [Dev frontend](https://hackers-auth.${{ inputs.environment }}.preview.cb-demos.io/)
-
+            [Auth endpoint](http://hackers-auth.54.214.225.132.nip.io/)
             Running hackers-auth:${{ inputs.artifactVersion }}
           format: MARKDOWN
