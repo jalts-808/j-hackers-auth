@@ -97,12 +97,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set version from Git
+      - name: Set version
         id: version
         run: |
-          COMMIT_COUNT=$(git rev-list --count HEAD)
           SHORT_SHA=$(git rev-parse --short HEAD)
-          NEW_VERSION="2.0-${COMMIT_COUNT}-${SHORT_SHA}"
+          NEW_VERSION="2.0-${{ github.run_number }}-${SHORT_SHA}"
           echo "Setting version to: $NEW_VERSION"
           echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
