@@ -1,4 +1,4 @@
-module github.com/cloudbees-days/hackers-auth
+module github.com/jalts-808/j-hackers-auth
 
 go 1.23.4
 

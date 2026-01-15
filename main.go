@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	_ "github.com/cloudbees-days/hackers-auth/docs" // Import the generated docs
+	_ "github.com/jalts-808/j-hackers-auth/docs" // Import the generated docs
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
