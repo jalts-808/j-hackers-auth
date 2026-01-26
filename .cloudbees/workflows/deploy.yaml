@@ -25,7 +25,7 @@ on:
       environment:
         type: string
         required: true
-        default: micro-hacker
+        default: j-hackers-k3s
 env:
   APP_NAME: microhacker-auth
 jobs:
@@ -51,7 +51,7 @@ jobs:
             image:
               repository: ${{ secrets.DOCKERHUB_USER }}/hackers-auth
               tag: ${{ inputs.artifactVersion }}
-            hostname: hackers-auth.54.189.62.135.nip.io
+            hostname: ${{ vars.host_prefix }}hackers-auth.54.201.69.176.nip.io
             ingress:
               className: traefik
       - name: Register deployed artifact
@@ -64,7 +64,7 @@ jobs:
         uses: cloudbees-io/publish-evidence-item@v1
         with:
           content: |-
-            ## Deployed environment
-            [Auth endpoint](http://hackers-auth.54.189.62.135.nip.io/)
+            ## Deployed to ${{ inputs.environment }}
+            [Auth endpoint](http://${{ vars.host_prefix }}hackers-auth.54.201.69.176.nip.io/)
             Running hackers-auth:${{ inputs.artifactVersion }}
           format: MARKDOWN
